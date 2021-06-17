@@ -1,0 +1,61 @@
+***Copy
+Dim intCtr As Integer
+Dim strRow As String
+Dim strRow2 As String
+Dim ctr As Integer
+
+intCtr = 2
+
+Do While Cells(intCtr, 1) <> ""
+
+    strRow = intCtr & ":" & intCtr
+    For i = 1 To 25
+        Rows(strRow).Select
+        Selection.Copy
+        Selection.Insert Shift:=xlDown
+    Next i
+    If ctr = 0 Then
+     ctr = i
+    Else
+     ctr = ctr + i
+    End If
+    
+    strRow2 = ctr + 1 & ":" & ctr + 1
+    Rows(strRow2).Select
+    Selection.ClearContents
+   
+    intCtr = ctr + 2
+Loop
+
+
+
+***Delete
+
+Dim intCtr As Integer
+Dim strRow As String
+Dim strRow2 As String
+Dim ctr As Integer
+
+intCtr = 3
+
+Do While Cells(intCtr, 1) <> ""
+
+    strRow = intCtr & ":" & intCtr
+    For i = 1 To 23
+        Rows(strRow).Select
+        Selection.Delete
+        'Selection.Insert Shift:=xlDown
+    Next i
+    If ctr = 0 Then
+     'ctr = i
+      ctr = ctr + 5
+    Else
+     ctr = ctr + 3
+    End If
+    
+    strRow2 = ctr + 1 & ":" & ctr + 1
+    Rows(strRow2).Select
+    'Selection.ClearContents
+   
+    intCtr = ctr + 1
+Loop

@@ -1,0 +1,25 @@
+
+'CHANGE uColumn of the current Column you want to extract and paste code to Module
+
+Option Explicit
+
+Sub GetNumbers()
+
+    Dim uColumn As String
+
+    ' if your data is in a different column then change A to some other letter(s)
+    uColumn = "A"
+
+    Dim i As Long, j As Long, r As Range
+    For i = 1 To Range(uColumn & Rows.Count).End(xlUp).Row
+        Set r = Range(uColumn & i)
+        Dim tmpStr As String
+        tmpStr = vbNullString
+        For j = 1 To Len(r)
+            If IsNumeric(Right(Left(r, j), 1)) Then tmpStr = tmpStr & Right(Left(r, j), 1)
+        Next j
+        r.NumberFormat = "@"
+        r = tmpStr
+    Next i
+
+End Sub
